@@ -8,6 +8,7 @@ const Counter = require('./server/database/models/Counter');
 const BetaKey = require('./server/database/models/BetaKey');
 const Session = require('./server/database/models/Session');
 const Calendar = require('./server/database/models/Calendar');
+const Notes = require('./server/database/models/Notes');
 
 const app = express();
 
@@ -73,12 +74,16 @@ app.post('/api/register', (req,res) => {
                             if(err) {
                                 res.send({success: false, message: err.errmsg});
                             }else {
+                                let note = new Notes({uId: doc.int});
                                 let calendar = new Calendar({uId: doc.int});
                                 calendar.save(() => {
                                     let profile = new Profile({id: doc.int});
                                     profile.save(() => {
-                                        doc.int++;
-                                        doc.save();
+                                        let note = new Notes({uId: doc.int});
+                                        note.save(() => {
+                                            doc.int++;
+                                            doc.save();
+                                        });
                                     });
                                 })
 
@@ -131,6 +136,31 @@ app.patch('/api/calendar/:id', (req,res) => {
         res.statusCode = 400;
         res.end();
     })
+});
+
+app.get('/api/notes/:id', (req,res) => {
+    Notes.findOne({uId: req.params.id}) 
+        .then((docs) => {
+            res.send({payload: docs.notes});
+        }).catch(() => {
+            res.send({payload: []});
+        })
+
+});
+
+app.patch('/api/notes/:id', (req,res) => {
+    return new Promise((resolve,reject) => {
+        let doc = Notes.findOneAndUpdate({uId: req.params.id}, {notes: req.body}); 
+        resolve(doc);
+    }).then((doc) => {
+        doc.save();
+    }).then(() => {
+        res.statusCode = 200;
+        res.end();
+    }).catch(() => {
+        res.statusCode = 400;
+        res.end();
+    });
 });
 
 app.get('/api/profile/:id', (req,res) => {

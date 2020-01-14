@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const NotesSchema = new mongoose.Schema({
   uId: Number,
-  Notes: Array
+  notes: {type: Array, default: []}
 });
 
 const Notes = mongoose.model('Notes', NotesSchema);
