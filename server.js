@@ -23,10 +23,10 @@ app.use(express.static('./public/dist'));
 //     let user = new Counter({model: 'User'});
 //     user.save();
 // })
-// app.get('/setup/generate/betakey', (req,res) => {
-//     let key = new BetaKey({name: 'BetaKeyId1', key: '07978396594239693788', uses: 0});
-//     key.save();
-// });
+app.get('/setup/generate/betakey', (req,res) => {
+    let key = new BetaKey({name: 'BetaKeyId1', key: '07978396594239693788', uses: 0});
+    key.save();
+});
 
 app.post('/api/login', (req,res) => {
     let {username, password, remember} = req.body;
