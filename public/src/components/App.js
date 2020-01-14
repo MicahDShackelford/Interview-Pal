@@ -18,6 +18,7 @@ import NotFound from './NotFound';
 import Forbidden from './Forbidden';
 import TopBar from './Protected/TopBar';
 import Calendar from './Protected/Calendar';
+import Interviews from './Protected/Interviews';
 import Notes from './Protected/Notes';
 import About from './Protected/About';
 import Support from './Protected/Support';
@@ -99,6 +100,15 @@ const App = () => {
                                     <TopBar ActiveUser={ActiveUser} Logout={Logout}/>
                                     <div className="primary-display">
                                         <Calendar ActiveUser={ActiveUser}/>
+                                    </div>
+                                </div>
+                            </Route>
+                            <Route path='/interviews' exact>
+                                <Navigation id="sidebar" ActiveUser={ActiveUser}/>
+                                <div className="right-pane">
+                                    <TopBar ActiveUser={ActiveUser} Logout={Logout}/>
+                                    <div className="primary-display">
+                                        <Interviews ActiveUser={ActiveUser}/>
                                     </div>
                                 </div>
                             </Route>

@@ -9,6 +9,7 @@ const BetaKey = require('./server/database/models/BetaKey');
 const Session = require('./server/database/models/Session');
 const Calendar = require('./server/database/models/Calendar');
 const Notes = require('./server/database/models/Notes');
+const Interview = require('./server/database/models/Interview');
 
 const app = express();
 
@@ -81,11 +82,14 @@ app.post('/api/register', (req,res) => {
                                     profile.save(() => {
                                         let note = new Notes({uId: doc.int});
                                         note.save(() => {
-                                            doc.int++;
-                                            doc.save();
+                                            let interview = new Interview({uId: doc.int});
+                                            interview.save(() => {
+                                                doc.int++;
+                                                doc.save();
+                                            });
                                         });
                                     });
-                                })
+                                });
 
                                 res.send({success: true, message: "Registerd", payload: {id: doc.int, email, firstName, lastName, username, profilePicture: response.profilePicture}});
                             }
@@ -124,6 +128,30 @@ app.get('/api/calendar/:id', (req,res) => {
 });
 
 app.patch('/api/calendar/:id', (req,res) => {
+    return new Promise((resolve,reject) => {
+        let doc = Calendar.findOneAndUpdate({uId: req.params.id}, {events: req.body});
+        resolve(doc);
+    }).then((doc) => {
+        doc.save();
+    }).then(() => {
+        res.statusCode = 200;
+        res.end();
+    }).catch(() => {
+        res.statusCode = 400;
+        res.end();
+    })
+});
+
+app.get('/api/interview/:id', (req,res) => {
+    Interview.findOne({uId: req.params.id}) 
+        .then((docs) => {
+            res.send({payload: docs.interviews});
+        }).catch(() => {
+            res.send({payload: []});
+        })
+});
+
+app.patch('/api/interview/:id', (req,res) => {
     return new Promise((resolve,reject) => {
         let doc = Calendar.findOneAndUpdate({uId: req.params.id}, {events: req.body});
         resolve(doc);

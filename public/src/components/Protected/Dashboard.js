@@ -75,7 +75,7 @@ const Dashboard = ({ActiveUser}) => {
             </div>
             <div className="card">
                 <h4>Completed Interviews</h4>
-                <h1 className="colored">32</h1>
+                <h1 className="colored">0</h1>
                 <div className="icon colored">
                     <i className="far fa-calendar-check"></i>
                 </div>
