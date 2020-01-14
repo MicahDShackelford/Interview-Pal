@@ -6,7 +6,7 @@ const Login = ({SetActiveUser}) => {
         e.preventDefault();
         const remember = document.getElementById('remember').checked;
         const user = {username: e.target[0].value, password: e.target[1].value, remember};
-        fetch('http://127.0.0.1:3000/api/login', {
+        fetch('/api/login', {
             method: 'POST',
             body: JSON.stringify(user),
             headers: {

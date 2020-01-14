@@ -31,7 +31,7 @@ const Register = ({SetActiveUser}) => {
             }, 8000);
         } else {
             const user = {email: e.target[0].value, firstName: e.target[1].value, lastName: e.target[2].value, username: e.target[3].value, password: e.target[4].value, betaKey: e.target[6].value,};
-            fetch('http://127.0.0.1:3000/api/register', {
+            fetch('/api/register', {
                 method: 'POST',
                 body: JSON.stringify(user),
                 headers: {
