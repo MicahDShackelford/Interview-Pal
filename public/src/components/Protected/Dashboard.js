@@ -5,6 +5,8 @@ import fetcher from './../util/fetch/fetcher';
 const Dashboard = ({ActiveUser}) => {
     const [Interviews, SetInterviews] = useState([]);
     const [Events, SetEvents] = useState([]);
+    const [Notes, SetNotes] = useState([]);
+
     useEffect(() => {
         fetcher.Events(ActiveUser.id)
             .then((res) => {
@@ -52,6 +54,10 @@ const Dashboard = ({ActiveUser}) => {
                 }
                 SetInterviews(interviews);
                 SetEvents(events);
+            });
+        fetcher.Notes(ActiveUser.id)
+            .then((res) => {
+                SetNotes(res);
             })
     },[])
   return (
@@ -74,7 +80,7 @@ const Dashboard = ({ActiveUser}) => {
             </div>
             <div className="card">
                 <h4>Total Notes</h4>
-                <h1 className="colored">132</h1>
+                <h1 className="colored">{Notes.length}</h1>
                 <div className="icon colored">
                     <i className="far fa-sticky-note"></i>
                 </div>
