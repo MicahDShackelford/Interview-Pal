@@ -39,11 +39,11 @@ const Navigation = ({ActiveUser}) => {
               <i className="far fa-sticky-note"></i>
               Notes
           </NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/notdone">
+          <NavLink className="nav-item" activeClassName="active" to="/about">
               <i className="fas fa-info"></i>
               About
           </NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/notdone">
+          <NavLink className="nav-item" activeClassName="active" to="/support">
               <i className="far fa-question-circle"></i>
               Support
           </NavLink>

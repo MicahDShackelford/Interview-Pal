@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import fetcher from './../util/fetch/fetcher';
-
+import moment from 'moment';
 
 const Dashboard = ({ActiveUser}) => {
     const [Interviews, SetInterviews] = useState([]);
@@ -41,6 +42,7 @@ const Dashboard = ({ActiveUser}) => {
                                 time = res[i].start.slice(11, 16);
                             }
                         } else {
+                            date = res[i].date;
                             time = "-";
                         }
                         events.push({title: res[i].title, time, date, key: `event-${i}`});
@@ -61,7 +63,7 @@ const Dashboard = ({ActiveUser}) => {
             })
     },[])
   return (
-    <div>
+    <div id="dashboard">
         <h1>Dashboard</h1>
         <div className="card-row">
             <div className="card">
@@ -91,49 +93,67 @@ const Dashboard = ({ActiveUser}) => {
             <div className="card">
                 <h4 className="colored">Upcoming Interviews</h4>
                 <table>
-                    <tr>
-                        <th>Interview</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th></th>
-                    </tr>
-                    {Interviews.map((interview) => (
-                        <tr key={interview.key}>
-                            <td><p>{interview.title}</p></td>
-                            <td><p>{interview.date}</p></td>
-                            <td><p>{interview.time}</p></td>
+                    
+                    <thead>
+                        <tr>
+                            <th>Interview</th>
+                            <th>Date</th>
+                            <th>Time</th>
                         </tr>
-                    ))}
+                    </thead>
+                    <tbody>
+                        {Interviews.map((interview) => (
+                            <tr key={interview.key}>
+                                <td><p>{interview.title}</p></td>
+                                <td><p>{interview.date}</p></td>
+                                <td><p>{interview.time}</p></td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
             </div>
             <div className="card">
                 <h4 className="colored">Upcoming Events</h4>
                 <table>
-                    <tr>
-                        <th>Events</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th></th>
-                    </tr>
-                    {Events.map((event) => (
+                    <thead>
                         <tr>
-                            <td><p>{event.title}</p></td>
-                            <td><p>{event.date}</p></td>
-                            <td><p>{event.time}</p></td>
+                            <th>Events</th>
+                            <th>Date</th>
+                            <th>Time</th>
                         </tr>
-                    ))}
+                    </thead>
+                    <tbody>
+                        {Events.map((event) => (
+                            <tr>
+                                <td><p>{event.title}</p></td>
+                                <td><p>{event.date}</p></td>
+                                <td><p>{event.time}</p></td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
             </div>
         </div>
         <div className="card-row">
             <div className="card">
                 <table>
-                    <tr>
-                        <th>Title</th>
-                        <th>Last Edit</th>
-                        <th></th>
-                    </tr>
-                    <tr>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Last Edit</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {Notes.map((note) => (
+                            <tr>
+                                <td><p>{note.title}</p></td>
+                                <td><p>{moment(note.lastUpdate).fromNow()}</p></td>
+                                <td><Link className="btn" to="/notes"><i className="fas fa-cog p-5"></i></Link></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    {/* <tr>
                         <td><p>Interview 4 Notes</p></td>
                         <td><p>Jan. 5, 2020<br/> 3:28pm</p></td>
                         <td><i className="fas fa-cog"></i></td>
@@ -142,7 +162,7 @@ const Dashboard = ({ActiveUser}) => {
                         <td><p>Micasoft Contact Emails</p></td>
                         <td><p>Jan. 1, 2020<br/> 7:45pm</p></td>
                         <td><i className="fas fa-cog"></i></td>
-                    </tr>
+                    </tr> */}
                 </table>
             </div>
         </div>

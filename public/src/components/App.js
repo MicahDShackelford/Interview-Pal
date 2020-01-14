@@ -19,6 +19,8 @@ import Forbidden from './Forbidden';
 import TopBar from './Protected/TopBar';
 import Calendar from './Protected/Calendar';
 import Notes from './Protected/Notes';
+import About from './Protected/About';
+import Support from './Protected/Support';
 
 const App = () => {
     const [ActiveUser, SetActiveUser] = useState(null);
@@ -69,7 +71,6 @@ const App = () => {
             </Router>
         )
     } else {
-
         return (
             <Router>
                 <div className="container flex">
@@ -108,6 +109,24 @@ const App = () => {
                                     <TopBar ActiveUser={ActiveUser} Logout={Logout}/>
                                     <div className="primary-display">
                                         <Notes ActiveUser={ActiveUser}/>
+                                    </div>
+                                </div>
+                            </Route>
+                            <Route path='/about' exact>
+                                <Navigation id="sidebar" ActiveUser={ActiveUser}/>
+                                <div className="right-pane">
+                                    <TopBar ActiveUser={ActiveUser} Logout={Logout}/>
+                                    <div className="primary-display">
+                                        <About />
+                                    </div>
+                                </div>
+                            </Route>
+                            <Route path='/support' exact>
+                                <Navigation id="sidebar" ActiveUser={ActiveUser}/>
+                                <div className="right-pane">
+                                    <TopBar ActiveUser={ActiveUser} Logout={Logout}/>
+                                    <div className="primary-display">
+                                        <Support />
                                     </div>
                                 </div>
                             </Route>
