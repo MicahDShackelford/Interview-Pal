@@ -35,7 +35,7 @@ const Navigation = ({ActiveUser}) => {
               <i className="far fa-calendar-check"></i>
               Interviews
           </NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/notdone">
+          <NavLink className="nav-item" activeClassName="active" to="/notes">
               <i className="far fa-sticky-note"></i>
               Notes
           </NavLink>
