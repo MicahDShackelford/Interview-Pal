@@ -5,6 +5,7 @@ import moment from 'moment';
 
 const Dashboard = ({ActiveUser}) => {
     const [Interviews, SetInterviews] = useState([]);
+    const [InterviewCnt, SetInterviewCnt] = useState(0);
     const [Events, SetEvents] = useState([]);
     const [Notes, SetNotes] = useState([]);
 
@@ -14,7 +15,6 @@ const Dashboard = ({ActiveUser}) => {
                 let interviews = [];
                 let events = [];
                 for(var i = 0; i < res.length; i++) {
-
                     if(res[i].interview) {
                         let date, time;
                         if(res[i].start) {
@@ -48,6 +48,9 @@ const Dashboard = ({ActiveUser}) => {
                         events.push({title: res[i].title, time, date, key: `event-${i}`});
                     }
                 }
+
+                SetInterviewCnt(interviews.length);
+
                 if(interviews.length === 0) {
                     interviews.push({title: "No Events Scheduled", date: "", time: ""})
                 }
@@ -68,7 +71,7 @@ const Dashboard = ({ActiveUser}) => {
         <div className="card-row">
             <div className="card">
                 <h4>Upcoming Interviews</h4>
-                <h1 className="colored">{Interviews.length}</h1>
+                <h1 className="colored">{InterviewCnt}</h1>
                 <div className="icon colored">
                     <i className="far fa-calendar-alt"></i>
                 </div>

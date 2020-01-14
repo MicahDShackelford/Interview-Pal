@@ -17,7 +17,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(express.static('./public/dist'));
 
 // app.get('/setup/counter/user', (req,res) => {
 //     let user = new Counter({model: 'User'});
@@ -215,7 +214,7 @@ app.get('/api/profile/:id', (req,res) => {
 // app.get('/profile', (req,res) => {
 //     res.sendFile("index.html", { root: "./public/dist" });
 // });
-
+app.use(express.static('./public/dist'));
 app.get('*', (req,res) => {
     res.sendFile("index.html", { root: "./public/dist" });
 });
