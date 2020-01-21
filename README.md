@@ -18,12 +18,12 @@ Password: test123
 
 ## Table of Contents
 
-1. [Technology Used](#Technology Used)
+1. [Techs](#Techs)
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
 
-## Technology Used
+## Techs
 
 - Babel
 - Webpack
