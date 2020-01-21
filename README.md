@@ -25,6 +25,7 @@ Password: test123
 
 ## Techs
 
+- AWS
 - Babel
 - Webpack
 - Full Calendar
