@@ -6,6 +6,10 @@
 #### My Component
 http://interviewpal.mdsh.io/
 
+##### Testing Credentials:
+User: test
+Password: test123
+
 ## Photos
 #### Login & Registration
 ![login](../assets/login.gif?raw=true)
