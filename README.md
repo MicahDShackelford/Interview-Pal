@@ -18,9 +18,23 @@ Password: test123
 
 ## Table of Contents
 
+1. [Technology Used](#Technology Used)
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
+
+## Technology Used
+
+- Babel
+- Webpack
+- Full Calendar
+- Express
+- Moment
+- MongoDB
+- Mongoose
+- Sass
+- React
+- React Router
 
 ## Usage
 
