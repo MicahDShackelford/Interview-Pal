@@ -31,22 +31,22 @@ const Navigation = ({ActiveUser}) => {
               <i className="far fa-calendar-alt"></i>
               Calendar
           </NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/interviews">
+          {/* <NavLink className="nav-item" activeClassName="active" to="/interviews">
               <i className="far fa-calendar-check"></i>
               Interviews
-          </NavLink>
+          </NavLink> */}
           <NavLink className="nav-item" activeClassName="active" to="/notes">
               <i className="far fa-sticky-note"></i>
               Notes
           </NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/about">
+          {/* <NavLink className="nav-item" activeClassName="active" to="/about">
               <i className="fas fa-info"></i>
               About
-          </NavLink>
-          <NavLink className="nav-item" activeClassName="active" to="/support">
+          </NavLink> */}
+          {/* <NavLink className="nav-item" activeClassName="active" to="/support">
               <i className="far fa-question-circle"></i>
               Support
-          </NavLink>
+          </NavLink> */}
       </div>
     </div>
   )

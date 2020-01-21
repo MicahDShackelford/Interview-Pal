@@ -4,11 +4,11 @@ const TopBar = ({ActiveUser, Logout}) => {
     return (
         <div className="flex top-bar">
             <div className="flex search-group">
-                <div className="input-group">
+                {/* <div className="input-group">
                     <input type="text" placeholder="Search for Users (Email or Username)"/>
                     <i className="fas fa-search"></i>
                 </div>
-                <button className="btn" id="search">Search</button>
+                <button className="btn" id="search">Search</button> */}
             </div>
             <div className="flex" id="account">
                 <i className="fas fa-user-circle"></i>
